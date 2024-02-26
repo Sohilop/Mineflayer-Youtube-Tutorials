@@ -11,6 +11,8 @@ const bot = mineflayer.createBot({
 
 bot.loadPlugin(pathfinder)
 
+
+
 function followPlayer() {
     const playerCI = bot.players['Mr_Gabru']
 
@@ -29,7 +31,9 @@ function followPlayer() {
     bot.pathfinder.setGoal(goal, true)
 }
 
-function locateEmeraldBlock () {
+bot.once('spawn', followPlayer)
+
+function locateEmeraldBlock() {
     const mcData = require('minecraft-data')(bot.version)
     const movements = new Movements(bot, mcData)
     movements.scafoldingBlocks = []
@@ -53,3 +57,5 @@ function locateEmeraldBlock () {
 }
 
 bot.once('spawn', locateEmeraldBlock)
+
+
